@@ -146,25 +146,7 @@ GEMINI_API_KEY=your_gemini_api_key_here
 
 ---
 
-### 4. Database Migration & Initialization (Optional)
-
-If you have existing JSON data from previous versions, run the idempotent migration utility to back up and transfer records to MongoDB Atlas:
-
-```bash
-# Run migration from root
-npm run db:migrate
-
-# Or directly from the server folder
-cd server && npm run migrate
-```
-
-- Automatically creates a timestamped local backup directory in `server/data/backup_<timestamp>/`.
-- Upserts records by unique ID to avoid duplicates on rerun.
-- Strips any secrets before saving.
-
----
-
-### 5. Running the Application
+### 4. Running the Application
 
 Start both the backend server (port 5000) and frontend client (port 5173) simultaneously:
 
@@ -178,7 +160,7 @@ npm run dev
 
 ---
 
-### 6. Running Automated Tests
+### 5. Running Automated Tests
 
 Run the comprehensive 45-point integration test suite against the live Atlas database:
 
