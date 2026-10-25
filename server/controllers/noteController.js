@@ -5,10 +5,10 @@ import { generateAIResponse } from '../services/geminiService.js';
 export const getNotes = async (req, res, next) => {
   try {
     const { subjectId, search } = req.query;
-    let notes = await NoteModel.find({ userId: req.user.id });
+    let notes = await NoteModel.find({ userId: req.user.id }).lean();
 
     if (subjectId) {
-      notes = notes.filter(n => n.subjectId === subjectId);
+      notes = notes.filter(n => String(n.subjectId) === String(subjectId));
     }
 
     if (search && search.trim()) {
@@ -20,14 +20,17 @@ export const getNotes = async (req, res, next) => {
       );
     }
 
-    const subjects = await SubjectModel.find({ userId: req.user.id });
+    const subjects = await SubjectModel.find({ userId: req.user.id }).lean();
     const subMap = new Map();
-    subjects.forEach(s => subMap.set(s._id || s.id, s));
+    subjects.forEach(s => subMap.set(String(s._id || s.id), s));
 
     const enriched = notes.map(n => {
-      const sub = subMap.get(n.subjectId);
+      const sub = subMap.get(String(n.subjectId));
+      const noteId = String(n._id || n.id);
       return {
         ...n,
+        id: noteId,
+        _id: noteId,
         subjectName: sub ? sub.name : 'General Notes',
         subjectCode: sub ? sub.code : 'NOTE',
         subjectColor: sub ? sub.color : '#6366f1'
@@ -100,8 +103,7 @@ export const summarizeNote = async (req, res, next) => {
     const aiResult = await generateAIResponse({
       prompt: `Please generate a concise 2-sentence high-yield summary of these study notes titled "${note.title}":\n\n${note.content}`,
       mode: 'summary',
-      subjectContext,
-      userApiKey: req.user.geminiApiKey
+      subjectContext
     });
 
     const cleanSummary = aiResult.text.replace(/^#+.*$/gm, '').trim();

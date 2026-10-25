@@ -1,26 +1,26 @@
 import mongoose from 'mongoose';
-import { isMongoConnected, collections } from '../config/db.js';
+import { v4 as uuidv4 } from 'uuid';
 
 const NoteSchema = new mongoose.Schema({
-  userId: { type: String, required: true },
-  subjectId: { type: String, default: '' },
-  title: { type: String, required: true },
+  _id: { type: String, default: () => uuidv4() },
+  userId: { type: String, required: true, index: true },
+  subjectId: { type: String, default: '', index: true },
+  title: { type: String, required: true, trim: true },
   content: { type: String, default: '' },
   tags: { type: [String], default: [] },
   isPinned: { type: Boolean, default: false },
   aiSummary: { type: String, default: '' },
-}, { timestamps: true });
+}, {
+  timestamps: true,
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
+});
 
-const MongooseNoteModel = mongoose.models.Note || mongoose.model('Note', NoteSchema);
+NoteSchema.virtual('id').get(function() {
+  return this._id;
+});
 
-export const NoteModel = {
-  find: (query) => (isMongoConnected ? MongooseNoteModel.find(query).lean() : collections.notes.find(query)),
-  findOne: (query) => (isMongoConnected ? MongooseNoteModel.findOne(query).lean() : collections.notes.findOne(query)),
-  findById: (id) => (isMongoConnected ? MongooseNoteModel.findById(id).lean() : collections.notes.findById(id)),
-  create: (data) => (isMongoConnected ? MongooseNoteModel.create(data) : collections.notes.create(data)),
-  findByIdAndUpdate: (id, data, options) => (isMongoConnected ? MongooseNoteModel.findByIdAndUpdate(id, data, options).lean() : collections.notes.findByIdAndUpdate(id, data, options)),
-  findByIdAndDelete: (id) => (isMongoConnected ? MongooseNoteModel.findByIdAndDelete(id).lean() : collections.notes.findByIdAndDelete(id)),
-  countDocuments: (query) => (isMongoConnected ? MongooseNoteModel.countDocuments(query) : collections.notes.countDocuments(query))
-};
+NoteSchema.index({ userId: 1, updatedAt: -1 });
 
+export const NoteModel = mongoose.models.Note || mongoose.model('Note', NoteSchema);
 export default NoteModel;

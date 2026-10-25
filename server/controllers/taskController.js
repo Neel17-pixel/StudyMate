@@ -4,10 +4,10 @@ import { SubjectModel } from '../models/Subject.js';
 export const getTasks = async (req, res, next) => {
   try {
     const { subjectId, status, priority, search } = req.query;
-    let tasks = await TaskModel.find({ userId: req.user.id });
+    let tasks = await TaskModel.find({ userId: req.user.id }).lean();
 
     if (subjectId) {
-      tasks = tasks.filter(t => t.subjectId === subjectId);
+      tasks = tasks.filter(t => String(t.subjectId) === String(subjectId));
     }
 
     if (status && status !== 'all') {
@@ -28,14 +28,17 @@ export const getTasks = async (req, res, next) => {
     }
 
     // Attach subject color and code if available
-    const subjects = await SubjectModel.find({ userId: req.user.id });
+    const subjects = await SubjectModel.find({ userId: req.user.id }).lean();
     const subMap = new Map();
-    subjects.forEach(s => subMap.set(s._id || s.id, s));
+    subjects.forEach(s => subMap.set(String(s._id || s.id), s));
 
     const enriched = tasks.map(t => {
-      const sub = subMap.get(t.subjectId);
+      const sub = subMap.get(String(t.subjectId));
+      const taskId = String(t._id || t.id);
       return {
         ...t,
+        id: taskId,
+        _id: taskId,
         subjectName: sub ? sub.name : 'General',
         subjectCode: sub ? sub.code : 'GEN',
         subjectColor: sub ? sub.color : '#6366f1'

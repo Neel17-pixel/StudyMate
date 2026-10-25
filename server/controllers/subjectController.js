@@ -4,22 +4,24 @@ import { StudySessionModel } from '../models/StudySession.js';
 
 export const getSubjects = async (req, res, next) => {
   try {
-    const subjects = await SubjectModel.find({ userId: req.user.id });
-    const tasks = await TaskModel.find({ userId: req.user.id });
-    const sessions = await StudySessionModel.find({ userId: req.user.id });
+    const subjects = await SubjectModel.find({ userId: req.user.id }).lean();
+    const tasks = await TaskModel.find({ userId: req.user.id }).lean();
+    const sessions = await StudySessionModel.find({ userId: req.user.id }).lean();
 
     // Enrich subjects with task counts and logged study minutes
     const enriched = subjects.map(sub => {
-      const subId = sub._id || sub.id;
-      const subTasks = tasks.filter(t => t.subjectId === subId);
+      const subId = String(sub._id || sub.id);
+      const subTasks = tasks.filter(t => String(t.subjectId) === subId);
       const pendingTasks = subTasks.filter(t => t.status !== 'completed').length;
       const completedTasks = subTasks.filter(t => t.status === 'completed').length;
       
-      const subSessions = sessions.filter(s => s.subjectId === subId);
+      const subSessions = sessions.filter(s => String(s.subjectId) === subId);
       const totalMinutes = subSessions.reduce((sum, s) => sum + (s.durationMinutes || 0), 0);
 
       return {
         ...sub,
+        id: subId,
+        _id: subId,
         pendingTasks,
         completedTasks,
         totalTasks: subTasks.length,

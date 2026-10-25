@@ -7,6 +7,8 @@
     "server": "node server/index.js",
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "db:migrate": "node server/scripts/migrateToMongo.js",
+    "test": "npm run test --prefix server",
     "install-all": "npm install && npm install --prefix server && npm install --prefix client",
     "build": "npm run build --prefix client"
   },

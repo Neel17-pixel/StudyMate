@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "migrate": "node scripts/migrateToMongo.js",
+    "test": "node scripts/testSuite.js"
   },
   "dependencies": {
     "@google/genai": "^2.31.0",

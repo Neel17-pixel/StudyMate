@@ -1,28 +1,25 @@
 import mongoose from 'mongoose';
-import { isMongoConnected, collections } from '../config/db.js';
+import { v4 as uuidv4 } from 'uuid';
 
 const UserSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  _id: { type: String, default: () => uuidv4() },
+  name: { type: String, required: true, trim: true },
   email: { type: String, required: true, unique: true, lowercase: true, trim: true },
   password: { type: String, required: true },
   avatar: { type: String, default: '' },
-  major: { type: String, default: 'Computer Science' },
-  university: { type: String, default: 'University of Technology' },
-  dailyStudyTargetMinutes: { type: Number, default: 180 },
-  geminiApiKey: { type: String, default: '' },
-  theme: { type: String, default: 'dark' },
-}, { timestamps: true });
+  major: { type: String, default: 'Computer Science', trim: true },
+  university: { type: String, default: 'University Student', trim: true },
+  dailyStudyTargetMinutes: { type: Number, default: 180, min: 10, max: 1440 },
+  theme: { type: String, default: 'dark', enum: ['dark', 'light'] },
+}, {
+  timestamps: true,
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
+});
 
-const MongooseUserModel = mongoose.models.User || mongoose.model('User', UserSchema);
+UserSchema.virtual('id').get(function() {
+  return this._id;
+});
 
-export const UserModel = {
-  find: (query) => (isMongoConnected ? MongooseUserModel.find(query).lean() : collections.users.find(query)),
-  findOne: (query) => (isMongoConnected ? MongooseUserModel.findOne(query).lean() : collections.users.findOne(query)),
-  findById: (id) => (isMongoConnected ? MongooseUserModel.findById(id).lean() : collections.users.findById(id)),
-  create: (data) => (isMongoConnected ? MongooseUserModel.create(data) : collections.users.create(data)),
-  findByIdAndUpdate: (id, data, options) => (isMongoConnected ? MongooseUserModel.findByIdAndUpdate(id, data, options).lean() : collections.users.findByIdAndUpdate(id, data, options)),
-  findByIdAndDelete: (id) => (isMongoConnected ? MongooseUserModel.findByIdAndDelete(id).lean() : collections.users.findByIdAndDelete(id)),
-  countDocuments: (query) => (isMongoConnected ? MongooseUserModel.countDocuments(query) : collections.users.countDocuments(query))
-};
-
+export const UserModel = mongoose.models.User || mongoose.model('User', UserSchema);
 export default UserModel;

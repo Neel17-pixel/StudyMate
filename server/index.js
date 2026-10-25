@@ -10,7 +10,6 @@ dotenv.config({ path: path.join(__dirname, '.env') });
 dotenv.config();
 
 import { connectDB, getDbStatus } from './config/db.js';
-import { ensureDemoUser } from './seed/demoData.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
 // Route imports
@@ -60,13 +59,6 @@ app.use(errorHandler);
 const startServer = async () => {
   try {
     await connectDB();
-    
-    // Pre-seed demo student account so users can test immediately
-    try {
-      await ensureDemoUser();
-    } catch (seedErr) {
-      console.warn('Demo user seed notice:', seedErr.message);
-    }
 
     app.listen(PORT, () => {
       console.log(`\n======================================================`);

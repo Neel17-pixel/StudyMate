@@ -6,10 +6,10 @@ import { UserModel } from '../models/User.js';
 export const getDashboardStats = async (req, res, next) => {
   try {
     const userId = req.user.id;
-    const user = await UserModel.findById(userId);
-    const tasks = await TaskModel.find({ userId });
-    const sessions = await StudySessionModel.find({ userId });
-    const subjects = await SubjectModel.find({ userId });
+    const user = await UserModel.findById(userId).lean();
+    const tasks = await TaskModel.find({ userId }).lean();
+    const sessions = await StudySessionModel.find({ userId }).lean();
+    const subjects = await SubjectModel.find({ userId }).lean();
 
     const targetMinutes = user?.dailyStudyTargetMinutes || 180;
 

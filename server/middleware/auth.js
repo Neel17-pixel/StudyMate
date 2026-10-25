@@ -38,7 +38,6 @@ export const protect = async (req, res, next) => {
       major: user.major,
       university: user.university,
       dailyStudyTargetMinutes: user.dailyStudyTargetMinutes || 180,
-      geminiApiKey: user.geminiApiKey || '',
       theme: user.theme || 'dark'
     };
 

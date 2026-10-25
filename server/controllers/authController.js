@@ -55,7 +55,7 @@ export const register = async (req, res, next) => {
         dailyStudyTargetMinutes: user.dailyStudyTargetMinutes,
         avatar: user.avatar,
         theme: user.theme,
-        hasGeminiKey: Boolean(user.geminiApiKey || process.env.GEMINI_API_KEY)
+        hasGeminiKey: Boolean(process.env.GEMINI_API_KEY)
       }
     });
   } catch (error) {
@@ -96,7 +96,7 @@ export const login = async (req, res, next) => {
         dailyStudyTargetMinutes: user.dailyStudyTargetMinutes,
         avatar: user.avatar,
         theme: user.theme,
-        hasGeminiKey: Boolean(user.geminiApiKey || process.env.GEMINI_API_KEY)
+        hasGeminiKey: Boolean(process.env.GEMINI_API_KEY)
       }
     });
   } catch (error) {
@@ -123,7 +123,7 @@ export const demoLogin = async (req, res, next) => {
         dailyStudyTargetMinutes: demoUser.dailyStudyTargetMinutes,
         avatar: demoUser.avatar,
         theme: demoUser.theme,
-        hasGeminiKey: Boolean(demoUser.geminiApiKey || process.env.GEMINI_API_KEY)
+        hasGeminiKey: Boolean(process.env.GEMINI_API_KEY)
       }
     });
   } catch (error) {
@@ -149,7 +149,7 @@ export const getMe = async (req, res, next) => {
         dailyStudyTargetMinutes: user.dailyStudyTargetMinutes,
         avatar: user.avatar,
         theme: user.theme,
-        hasGeminiKey: Boolean(user.geminiApiKey || process.env.GEMINI_API_KEY)
+        hasGeminiKey: Boolean(process.env.GEMINI_API_KEY)
       }
     });
   } catch (error) {
@@ -159,14 +159,13 @@ export const getMe = async (req, res, next) => {
 
 export const updateProfile = async (req, res, next) => {
   try {
-    const { name, major, university, dailyStudyTargetMinutes, geminiApiKey, theme } = req.body;
+    const { name, major, university, dailyStudyTargetMinutes, theme } = req.body;
     const updateData = {};
 
     if (name) updateData.name = name.trim();
     if (major) updateData.major = major.trim();
     if (university) updateData.university = university.trim();
     if (dailyStudyTargetMinutes) updateData.dailyStudyTargetMinutes = Number(dailyStudyTargetMinutes);
-    if (geminiApiKey !== undefined) updateData.geminiApiKey = geminiApiKey.trim();
     if (theme) updateData.theme = theme;
 
     const updated = await UserModel.findByIdAndUpdate(req.user.id, updateData, { new: true });
@@ -183,7 +182,7 @@ export const updateProfile = async (req, res, next) => {
         dailyStudyTargetMinutes: updated.dailyStudyTargetMinutes,
         avatar: updated.avatar,
         theme: updated.theme,
-        hasGeminiKey: Boolean(updated.geminiApiKey || process.env.GEMINI_API_KEY)
+        hasGeminiKey: Boolean(process.env.GEMINI_API_KEY)
       }
     });
   } catch (error) {

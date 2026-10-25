@@ -37,8 +37,7 @@ export const chat = async (req, res, next) => {
     const aiResult = await generateAIResponse({
       prompt: prompt.trim(),
       mode,
-      subjectContext,
-      userApiKey: user?.geminiApiKey || req.user.geminiApiKey
+      subjectContext
     });
 
     // Save assistant's response
@@ -68,7 +67,7 @@ export const chat = async (req, res, next) => {
 export const getChatHistory = async (req, res, next) => {
   try {
     const userId = String(req.user.id || req.user._id);
-    const messages = await ChatMessageModel.find({ userId });
+    const messages = await ChatMessageModel.find({ userId }).lean();
     messages.sort((a, b) => new Date(a.timestamp || a.createdAt).getTime() - new Date(b.timestamp || b.createdAt).getTime());
 
     res.json({ success: true, count: messages.length, data: messages });

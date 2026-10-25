@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
-import { isMongoConnected, collections } from '../config/db.js';
+import { v4 as uuidv4 } from 'uuid';
 
 const ChatMessageSchema = new mongoose.Schema({
-  userId: { type: String, required: true },
+  _id: { type: String, default: () => uuidv4() },
+  userId: { type: String, required: true, index: true },
   role: { type: String, enum: ['user', 'assistant', 'system'], required: true },
   content: { type: String, required: true },
   mode: {
@@ -12,19 +13,17 @@ const ChatMessageSchema = new mongoose.Schema({
   },
   subjectId: { type: String, default: '' },
   timestamp: { type: Date, default: Date.now }
-}, { timestamps: true });
+}, {
+  timestamps: true,
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
+});
 
-const MongooseChatMessageModel = mongoose.models.ChatMessage || mongoose.model('ChatMessage', ChatMessageSchema);
+ChatMessageSchema.virtual('id').get(function() {
+  return this._id;
+});
 
-export const ChatMessageModel = {
-  find: (query) => (isMongoConnected ? MongooseChatMessageModel.find(query).lean() : collections.chatMessages.find(query)),
-  findOne: (query) => (isMongoConnected ? MongooseChatMessageModel.findOne(query).lean() : collections.chatMessages.findOne(query)),
-  findById: (id) => (isMongoConnected ? MongooseChatMessageModel.findById(id).lean() : collections.chatMessages.findById(id)),
-  create: (data) => (isMongoConnected ? MongooseChatMessageModel.create(data) : collections.chatMessages.create(data)),
-  findByIdAndUpdate: (id, data, options) => (isMongoConnected ? MongooseChatMessageModel.findByIdAndUpdate(id, data, options).lean() : collections.chatMessages.findByIdAndUpdate(id, data, options)),
-  findByIdAndDelete: (id) => (isMongoConnected ? MongooseChatMessageModel.findByIdAndDelete(id).lean() : collections.chatMessages.findByIdAndDelete(id)),
-  deleteMany: (query) => (isMongoConnected ? MongooseChatMessageModel.deleteMany(query) : collections.chatMessages.deleteMany(query)),
-  countDocuments: (query) => (isMongoConnected ? MongooseChatMessageModel.countDocuments(query) : collections.chatMessages.countDocuments(query))
-};
+ChatMessageSchema.index({ userId: 1, timestamp: 1 });
 
+export const ChatMessageModel = mongoose.models.ChatMessage || mongoose.model('ChatMessage', ChatMessageSchema);
 export default ChatMessageModel;

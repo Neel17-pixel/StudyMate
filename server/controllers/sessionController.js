@@ -4,15 +4,18 @@ import { SubjectModel } from '../models/Subject.js';
 
 export const getSessions = async (req, res, next) => {
   try {
-    const sessions = await StudySessionModel.find({ userId: req.user.id });
-    const subjects = await SubjectModel.find({ userId: req.user.id });
+    const sessions = await StudySessionModel.find({ userId: req.user.id }).lean();
+    const subjects = await SubjectModel.find({ userId: req.user.id }).lean();
     const subMap = new Map();
-    subjects.forEach(s => subMap.set(s._id || s.id, s));
+    subjects.forEach(s => subMap.set(String(s._id || s.id), s));
 
     const enriched = sessions.map(s => {
-      const sub = subMap.get(s.subjectId);
+      const sub = subMap.get(String(s.subjectId));
+      const sessionId = String(s._id || s.id);
       return {
         ...s,
+        id: sessionId,
+        _id: sessionId,
         subjectName: sub ? sub.name : 'Independent Focus',
         subjectCode: sub ? sub.code : 'FOCUS',
         subjectColor: sub ? sub.color : '#6366f1'
