@@ -1,0 +1,27 @@
+{
+  "name": "studymate-monorepo",
+  "version": "1.0.0",
+  "description": "StudyMate — AI-Powered Student Productivity Platform (MERN)",
+  "scripts": {
+    "start": "node server/index.js",
+    "server": "node server/index.js",
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-all": "npm install && npm install --prefix server && npm install --prefix client",
+    "build": "npm run build --prefix client"
+  },
+  "keywords": [
+    "studymate",
+    "mern",
+    "education",
+    "productivity",
+    "ai",
+    "gemini"
+  ],
+  "author": "StudyMate Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.1.9"
+  }
+}

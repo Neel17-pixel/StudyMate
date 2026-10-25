@@ -1,0 +1,135 @@
+[
+  {
+    "_id": "01adf00e-8d2d-4b9d-aa15-33d5607e8c90",
+    "id": "01adf00e-8d2d-4b9d-aa15-33d5607e8c90",
+    "userId": "a0eb35be-f68a-431e-a88d-bde2337787da",
+    "subjectId": "24f84b8a-104a-4529-b4c4-2b12588b4cd5",
+    "title": "Gram-Schmidt Orthonormalization Quiz",
+    "description": "Self-study quiz on vector projections and QR decomposition.",
+    "type": "Quiz",
+    "priority": "low",
+    "status": "completed",
+    "dueDate": "2026-10-23T14:51:27.468Z",
+    "estimatedMinutes": 45,
+    "actualMinutes": 40,
+    "completedAt": "2026-10-23T19:39:27.468Z",
+    "tags": [
+      "orthogonal",
+      "vectors"
+    ],
+    "isPinned": false,
+    "createdAt": "2026-10-24T14:51:27.482Z",
+    "updatedAt": "2026-10-24T14:51:27.482Z"
+  },
+  {
+    "_id": "ba459343-fee2-464e-a25f-f74c08052564",
+    "id": "ba459343-fee2-464e-a25f-f74c08052564",
+    "userId": "a0eb35be-f68a-431e-a88d-bde2337787da",
+    "subjectId": "bc7f3ab3-a19b-40a7-8858-b04881437c43",
+    "title": "Graph Traversal (BFS / DFS / Dijkstra) Lab 3",
+    "description": "Implemented shortest path algorithm for weighted graphs with adjacency lists.",
+    "type": "Lab Report",
+    "priority": "medium",
+    "status": "completed",
+    "dueDate": "2026-10-22T14:51:27.468Z",
+    "estimatedMinutes": 90,
+    "actualMinutes": 85,
+    "completedAt": "2026-10-23T02:51:27.468Z",
+    "tags": [
+      "graphs",
+      "dijkstra",
+      "lab"
+    ],
+    "isPinned": false,
+    "createdAt": "2026-10-24T14:51:27.479Z",
+    "updatedAt": "2026-10-24T14:51:27.479Z"
+  },
+  {
+    "_id": "fefde988-7a68-4ff5-a324-5d2ac0f913b5",
+    "id": "fefde988-7a68-4ff5-a324-5d2ac0f913b5",
+    "userId": "a0eb35be-f68a-431e-a88d-bde2337787da",
+    "subjectId": "331af85b-4d52-45cc-a983-01f835d2401d",
+    "title": "Research Paper: Working Memory Capacity in Multitasking",
+    "description": "Write a 1500-word critique analyzing Miller’s 7±2 law and modern Cowan 4-chunk limitations.",
+    "type": "Project",
+    "priority": "medium",
+    "status": "pending",
+    "dueDate": "2026-10-31T14:51:27.468Z",
+    "estimatedMinutes": 240,
+    "actualMinutes": 30,
+    "tags": [
+      "paper",
+      "psychology",
+      "literature-review"
+    ],
+    "isPinned": false,
+    "createdAt": "2026-10-24T14:51:27.476Z",
+    "updatedAt": "2026-10-24T14:51:27.476Z"
+  },
+  {
+    "_id": "4094cd44-bf9d-4f64-9242-df3a37d8ca1f",
+    "id": "4094cd44-bf9d-4f64-9242-df3a37d8ca1f",
+    "userId": "a0eb35be-f68a-431e-a88d-bde2337787da",
+    "subjectId": "bbc94f8c-0bcf-4e95-aff0-1dcc7630379e",
+    "title": "Midterm Exam Preparation & Cache Simulator",
+    "description": "Review direct-mapped vs set-associative cache architectures and write the L1 hit/miss parser.",
+    "type": "Exam Prep",
+    "priority": "high",
+    "status": "pending",
+    "dueDate": "2026-10-28T14:51:27.468Z",
+    "estimatedMinutes": 180,
+    "actualMinutes": 60,
+    "tags": [
+      "midterm",
+      "cache",
+      "architecture"
+    ],
+    "isPinned": false,
+    "createdAt": "2026-10-24T14:51:27.474Z",
+    "updatedAt": "2026-10-24T14:51:27.474Z"
+  },
+  {
+    "_id": "97e5695d-5be5-4e69-ad54-b0093ee42b30",
+    "id": "97e5695d-5be5-4e69-ad54-b0093ee42b30",
+    "userId": "a0eb35be-f68a-431e-a88d-bde2337787da",
+    "subjectId": "24f84b8a-104a-4529-b4c4-2b12588b4cd5",
+    "title": "Eigenvalues & Diagonalization Problem Set 4",
+    "description": "Solve questions 4.1 to 4.15 regarding characteristic polynomials and geometric multiplicity.",
+    "type": "Assignment",
+    "priority": "high",
+    "status": "pending",
+    "dueDate": "2026-10-27T14:51:27.468Z",
+    "estimatedMinutes": 90,
+    "actualMinutes": 0,
+    "tags": [
+      "matrices",
+      "eigenvalues",
+      "homework"
+    ],
+    "isPinned": true,
+    "createdAt": "2026-10-24T14:51:27.470Z",
+    "updatedAt": "2026-10-24T14:51:27.470Z"
+  },
+  {
+    "_id": "5be06f2a-4473-4d5b-b6b2-7cd3889f50cb",
+    "id": "5be06f2a-4473-4d5b-b6b2-7cd3889f50cb",
+    "userId": "a0eb35be-f68a-431e-a88d-bde2337787da",
+    "subjectId": "bc7f3ab3-a19b-40a7-8858-b04881437c43",
+    "title": "Implement Red-Black Tree Balancing & Deletion",
+    "description": "Complete the rotateLeft, rotateRight, and color flipping methods. Verify with unit test suite.",
+    "type": "Assignment",
+    "priority": "urgent",
+    "status": "in_progress",
+    "dueDate": "2026-10-26T02:51:27.468Z",
+    "estimatedMinutes": 120,
+    "actualMinutes": 45,
+    "tags": [
+      "trees",
+      "algorithms",
+      "c++"
+    ],
+    "isPinned": true,
+    "createdAt": "2026-10-24T14:51:27.468Z",
+    "updatedAt": "2026-10-24T14:51:27.468Z"
+  }
+]

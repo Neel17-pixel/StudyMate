@@ -1,0 +1,67 @@
+[
+  {
+    "_id": "05ffc349-b55b-4f71-a3b9-b4c9eaffdb97",
+    "id": "05ffc349-b55b-4f71-a3b9-b4c9eaffdb97",
+    "userId": "a0eb35be-f68a-431e-a88d-bde2337787da",
+    "subjectId": "331af85b-4d52-45cc-a983-01f835d2401d",
+    "durationMinutes": 30,
+    "sessionType": "pomodoro",
+    "productivityRating": 4,
+    "notes": "Reviewed Baddeley’s model of working memory.",
+    "completedAt": "2026-10-21T14:51:27.468Z",
+    "createdAt": "2026-10-24T14:51:27.493Z",
+    "updatedAt": "2026-10-24T14:51:27.493Z"
+  },
+  {
+    "_id": "ce5bfa1b-b191-4cf1-a0f2-31beff6f31e6",
+    "id": "ce5bfa1b-b191-4cf1-a0f2-31beff6f31e6",
+    "userId": "a0eb35be-f68a-431e-a88d-bde2337787da",
+    "subjectId": "bbc94f8c-0bcf-4e95-aff0-1dcc7630379e",
+    "durationMinutes": 45,
+    "sessionType": "pomodoro",
+    "productivityRating": 4,
+    "notes": "Simulated 2-way set associative cache replacement policy.",
+    "completedAt": "2026-10-22T14:51:27.468Z",
+    "createdAt": "2026-10-24T14:51:27.491Z",
+    "updatedAt": "2026-10-24T14:51:27.491Z"
+  },
+  {
+    "_id": "6736157f-dc67-4a4b-b655-6e5cd21fdff0",
+    "id": "6736157f-dc67-4a4b-b655-6e5cd21fdff0",
+    "userId": "a0eb35be-f68a-431e-a88d-bde2337787da",
+    "subjectId": "24f84b8a-104a-4529-b4c4-2b12588b4cd5",
+    "durationMinutes": 50,
+    "sessionType": "pomodoro",
+    "productivityRating": 5,
+    "notes": "Derived characteristic equations for 3x3 matrices.",
+    "completedAt": "2026-10-23T14:51:27.468Z",
+    "createdAt": "2026-10-24T14:51:27.488Z",
+    "updatedAt": "2026-10-24T14:51:27.488Z"
+  },
+  {
+    "_id": "1bfe0c51-d42b-43eb-8626-cb8597556b7a",
+    "id": "1bfe0c51-d42b-43eb-8626-cb8597556b7a",
+    "userId": "a0eb35be-f68a-431e-a88d-bde2337787da",
+    "subjectId": "bc7f3ab3-a19b-40a7-8858-b04881437c43",
+    "durationMinutes": 25,
+    "sessionType": "pomodoro",
+    "productivityRating": 4,
+    "notes": "Unit tested tree edge cases with null sentinel nodes.",
+    "completedAt": "2026-10-24T12:51:27.468Z",
+    "createdAt": "2026-10-24T14:51:27.486Z",
+    "updatedAt": "2026-10-24T14:51:27.486Z"
+  },
+  {
+    "_id": "11bcf7fa-4bdc-4aea-ace9-be2212bc1115",
+    "id": "11bcf7fa-4bdc-4aea-ace9-be2212bc1115",
+    "userId": "a0eb35be-f68a-431e-a88d-bde2337787da",
+    "subjectId": "bc7f3ab3-a19b-40a7-8858-b04881437c43",
+    "durationMinutes": 50,
+    "sessionType": "deep_work",
+    "productivityRating": 5,
+    "notes": "Cracked the red-black tree rotation logic. Extremely focused session!",
+    "completedAt": "2026-10-24T10:51:27.468Z",
+    "createdAt": "2026-10-24T14:51:27.484Z",
+    "updatedAt": "2026-10-24T14:51:27.484Z"
+  }
+]

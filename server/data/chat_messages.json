@@ -1,0 +1,37 @@
+[
+  {
+    "_id": "d7880877-e5fd-4a26-9a0f-743a440efe8c",
+    "id": "d7880877-e5fd-4a26-9a0f-743a440efe8c",
+    "userId": "dee964bd-6f93-4adc-a890-a99601307554",
+    "role": "assistant",
+    "content": "Hello there! I'm **StudyMate AI**, your personal academic coach. 🎓 \n\nObject-Oriented Programming (OOP) is the backbone of modern software development. Mastering it isn't just about memorizing definitions; it's about shifting your mindset to see the world as a collection of interacting objects. \n\nSince we have **6 hours**, we are going to use a **High-Intensity Interval Training (HIIT)** approach for your brain. We will utilize **50/10 Pomodoro cycles** (50 minutes of deep work, 10 minutes of rest) to maintain peak cognitive load.\n\n---\n\n### 📅 The 6-Hour OOPS Mastery Schedule\n\n| Time Block | Focus Area | Active Recall Milestone |\n| :--- | :--- | :--- |\n| **Hour 1** | Classes, Objects, & Encapsulation | Explain \"Data Hiding\" to an imaginary 10-year-old. |\n| **Hour 2** | Abstraction & Interfaces | Draw a hierarchy of a \"Vehicle\" system. |\n| **Hour 3** | Inheritance (The \"Is-A\" Relationship) | Identify the difference between Protected and Private. |\n| **Hour 4** | Polymorphism (Static vs. Dynamic) | Write code for Method Overloading vs. Overriding. |\n| **Hour 5** | Constructors, `this`, and `super` | Trace the memory allocation of an object. |\n| **Hour 6** | SOLID Principles & Final Quiz | Solve 3 logic-based OOP design problems. |\n\n---\n\n### 🧠 Hour-by-Hour Deep Dive\n\n#### Hour 1: The Foundation (Encapsulation)\n*   **The Concept:** Think of a **Class** as a blueprint and an **Object** as the actual house built from it.\n*   **Encapsulation:** This is the \"Capsule.\" We wrap data (variables) and code (methods) together and restrict direct access using `private` keywords.\n*   **Active Recall Task:** Why do we use Getters and Setters instead of making variables public? (Answer: To maintain control and validation over the data).\n\n#### Hour 2: Abstraction (The \"What\" vs. the \"How\")\n*   **The Concept:** When you drive a car, you know the steering wheel turns the wheels. You don't need to know the physics of the rack-and-pinion gear. That’s **Abstraction**.\n*   **Technical Depth:** Difference between **Abstract Classes** (can have state/constructor) and **Interfaces** (pure contracts).\n*   **Pro-Tip:** Use Interfaces for \"Can-Do\" abilities (e.g., `iRunnable`) and Abstract Classes for \"Is-A\" identities.\n\n#### Hour 3: Inheritance (Code Reusability)\n*   **The Concept:** Don't reinvent the wheel. A `Smartphone` class should inherit from a `CellPhone` class.\n*   **Key Terms:** Base/Parent Class vs. Derived/Child Class.\n*   **Warning:** Avoid \"Deep Inheritance Trees.\" If you are 5 levels deep, your code becomes hard to maintain!\n\n#### Hour 4: Polymorphism (Many Forms)\n*   **Static (Compile-time):** Method Overloading (Same name, different parameters).\n*   **Dynamic (Runtime):** Method Overriding (Child changes Parent’s method behavior).\n*   **Feynman Analogy:** A person can be a \"Student,\" a \"Son,\" and a \"Customer\" all at once. The person is the same, but their behavior changes based on the context.\n\n#### Hour 5: The \"Plumbing\" (Constructors & Memory)\n*   **Focus:** How objects are born. \n*   **Keywords:** `this` (referring to current instance) and `super` (calling the parent).\n*   **Memory:** Understand that Objects live on the **Heap**, while references live on the **Stack**.\n\n#### Hour 6: The Architect Phase (SOLID)\n*   **S.O.L.I.D:** Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion.\n*   **Final Review:** Spend the last 30 minutes taking the practice quiz below.\n\n---\n\n### 💻 Code Example: Putting it all together (Java)\n\n```java\n// Abstraction & Inheritance\nabstract class Animal {\n    private String name; // Encapsulation\n\n    public Animal(String name) { this.name = name; }\n\n    public String getName() { return name; }\n    \n    // Abstract method (Implementation hidden)\n    abstract void makeMovingSound(); \n}\n\nclass Dog extends Animal {\n    public Dog(String name) { super(name); }\n\n    @Override\n    void makeMovingSound() {\n        System.out.println(getName() + \" says: Woof! (Polymorphism)\");\n    }\n}\n```\n\n---\n\n### 📝 Active Recall Practice Quiz\n\n**Q1: Which OOP concept is most closely associated with \"Data Hiding\"?**\n*   A) Inheritance\n*   B) Encapsulation\n*   C) Polymorphism\n*   D) Abstraction\n\n> **Check Answer:** **B) Encapsulation.** By using private modifiers and accessors, we hide the internal state of the object from the outside world.\n\n**Q2: What happens if a class inherits from an Abstract Class but does not implement all its abstract methods?**\n*   A) The code compiles fine.\n*   B) The child class must also be declared Abstract.\n*   C) A runtime error occurs.\n*   D) The methods are automatically filled with null values.\n\n> **Check Answer:** **B) The child class must also be declared Abstract.** If it's not abstract, it *must* provide implementation for all inherited abstract methods.\n\n---\n\n### 🚀 Study Strategy Tips for OOPS\n\n1.  **Don't just read, Type!** OOP is best learned by breaking code. Try to inherit from a `final` class and see what the compiler says.\n2.  **The \"Rubber Duck\" Method:** Explain the difference between an Interface and an Abstract class to a literal object on your desk. If you stumble, you don't know it well enough yet.\n3.  **Prioritize:** If you are short on time, focus 70% of your energy on **Polymorphism and Interfaces**. These are the most common exam and interview topics.\n\n**You've got this!** Take a 10-minute break now, grab some water, and start **Hour 1**. I'm here if you need a concept clarified! 🌟",
+    "mode": "schedule",
+    "subjectId": "",
+    "timestamp": "2026-10-24T16:31:29.225Z",
+    "createdAt": "2026-10-24T16:31:29.226Z",
+    "updatedAt": "2026-10-24T16:31:29.226Z"
+  },
+  {
+    "_id": "8aa5dbff-d08f-4fb4-985a-3bf17e3d7a92",
+    "id": "8aa5dbff-d08f-4fb4-985a-3bf17e3d7a92",
+    "userId": "dee964bd-6f93-4adc-a890-a99601307554",
+    "role": "user",
+    "content": "oops study plan for 6 hours",
+    "mode": "schedule",
+    "subjectId": "",
+    "timestamp": "2026-10-24T16:31:17.105Z",
+    "createdAt": "2026-10-24T16:31:17.105Z",
+    "updatedAt": "2026-10-24T16:31:17.105Z"
+  },
+  {
+    "_id": "a80405e9-dc84-4c05-89b3-a9ebbc0c7f23",
+    "id": "a80405e9-dc84-4c05-89b3-a9ebbc0c7f23",
+    "userId": "dee964bd-6f93-4adc-a890-a99601307554",
+    "role": "assistant",
+    "content": "👋 Chat history cleared. How can I assist your study session today? Feel free to ask for concept explanations, quiz questions, or note summaries!",
+    "mode": "general",
+    "timestamp": "2026-10-24T16:30:44.595Z",
+    "createdAt": "2026-10-24T16:30:44.596Z",
+    "updatedAt": "2026-10-24T16:30:44.596Z"
+  }
+]
